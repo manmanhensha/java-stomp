@@ -11,13 +11,13 @@ websocket:
     - "*"
   broker:
 #    使用 simpleBroker 则不支持 WebSocket 集群
-     use-simple-broker: true
+     use-simple-broker: false
 #    若 use-simple-broker 为 false, 则以下配置必填
-#         username: test¬
-#         password: Passw0rd
-#         virtualHost: "/stomp"
-#         addresses:
-#          - 127.0.0.1:61613
+     username: admin
+     password: Passw0rd
+     virtualHost: "/wxkf"
+     addresses:
+
 #          - 127.0.0.1:61613
 logging:
   level: debug

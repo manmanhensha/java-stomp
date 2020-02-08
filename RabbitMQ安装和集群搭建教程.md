@@ -55,6 +55,33 @@ chattr -i /etc/shadow
 
 `rabbitmq-plugins enable rabbitmq_stomp`
 
+## 需要开通rabbitmq中STOMP 通道
+`rabbitmq-plugins enable rabbitmq_web_stomp`
+
+`rabbitmq-plugins enable rabbitmq_web_stomp_examples`
+
+开通之后重启RabbitMq
+
+Docker给运行中的容器添加映射端口
+
+方法一：
+1、获得容器IP
+将container_name 换成实际环境中的容器名
+docker inspect `container_name` | grep IPAddress
+
+2、 iptables转发端口
+将容器的8001端口映射到docker主机的81端口
+iptables -t nat -A DOCKER -p tcp --dport 81 -j DNAT --to-destination 192.168.0.2:8001
+方法二：
+
+1、提交一个运行中的容器为镜像
+
+docker commit container_id solr
+
+2、运行镜像并添加端口
+
+docker run -itd -p 8000:80 -p 8001:81 -p 8002:82 solr /bin/bash
+
 ## 添加用户
 
 格式: `rabbitmqctl add_user <user> <password>`

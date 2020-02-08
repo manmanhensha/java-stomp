@@ -1,7 +1,7 @@
 websocket:
   broker:
      use-simple-broker: false
-     username: test
+     username: admin
      password: Passw0rd
      virtualHost: "/stomp"
      addresses:
